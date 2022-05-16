@@ -1,6 +1,6 @@
 import cv2
 import pandas as pd
-persona = 4
+persona = 8
 dire = 'D:\\CIC\\LSM\\CNN_3D\\videos\\persona'
 videoNames = ['avisame', 'bien', 'buenosDias', 'comoEstas', 'duda', 'examen', 'hola', 'mal', 'mandar', 'whatsapp']
 maxFrames = 0
@@ -26,6 +26,7 @@ for p in range(persona):
 		# 	maxFrames = length
 		# 	maxPersona = p+1
 		# 	maxSign = video
+			
 		if (p == 0 and video == 'avisame') or (p == 0 and video == 'buenosDias'):
 			namesTest.append('persona' + str(p+1) + '/' + video + ".mp4")
 			classesTest.append(video)
@@ -69,6 +70,9 @@ for p in range(persona):
 			classesTrain.append(video)
 			print('Name: ','persona' + str(p+1) + '\\' + video + ".mp4", 'class: ', video, 'train')
 			
+		if p>=4:
+			namesTrain.append('persona' + str(p+1) + '/' + video + ".mp4")
+			classesTrain.append(video)
 		# print('Name: ','persona' + str(p+1) + '\\' + video + ".mp4", 'class: ', video)
 		names.append('persona' + str(p+1) + '/' + video + ".mp4")
 		classes.append(video)
@@ -79,14 +83,14 @@ for p in range(persona):
 # print('>>>Sign=',maxSign)
 df['Name'] = names
 df['Class'] = classes
-df.to_csv('D:\\CIC\\LSM\\CNN_3D\\LSM-CNN3D\\all.csv', index=False)
+df.to_csv('D:\\CIC\\LSM\\CNN_3D\\LSM-CNN3D\\all_aug.csv', index=False)
 
 df = pd.DataFrame()
 df['Name'] = namesTrain
 df['Class'] = classesTrain
-df.to_csv('D:\\CIC\\LSM\\CNN_3D\\LSM-CNN3D\\train.csv', index=False)
+df.to_csv('D:\\CIC\\LSM\\CNN_3D\\LSM-CNN3D\\train_aug.csv', index=False)
 
-df = pd.DataFrame()
-df['Name'] = namesTest
-df['Class'] = classesTest
-df.to_csv('D:\\CIC\\LSM\\CNN_3D\\LSM-CNN3D\\test.csv', index=False)
+# df = pd.DataFrame()
+# df['Name'] = namesTest
+# df['Class'] = classesTest
+# df.to_csv('D:\\CIC\\LSM\\CNN_3D\\LSM-CNN3D\\test.csv', index=False)
