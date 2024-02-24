@@ -1,12 +1,6 @@
-import cv2
 import pandas as pd
 persona = 8
-dire = 'D:\\CIC\\LSM\\CNN_3D\\videos\\persona'
 videoNames = ['avisame', 'bien', 'buenosDias', 'comoEstas', 'duda', 'examen', 'hola', 'mal', 'mandar', 'whatsapp']
-maxFrames = 0
-maxPersona = 0
-maxSign = ''
-df = pd.DataFrame()
 names = []
 classes = []
 
@@ -17,16 +11,7 @@ namesTest = []
 classesTest = []
 
 for p in range(persona):
-	# print('---Persona', p+1)
 	for video in videoNames:
-		# cap = cv2.VideoCapture(dire + str(p+1) + '\\' + video + ".mp4")
-		# length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-		# print(video, 'contiene ', length, 'frames')
-		# if length > maxFrames:
-		# 	maxFrames = length
-		# 	maxPersona = p+1
-		# 	maxSign = video
-			
 		if (p == 0 and video == 'avisame') or (p == 0 and video == 'buenosDias'):
 			namesTest.append('persona' + str(p+1) + '/' + video + ".mp4")
 			classesTest.append(video)
@@ -78,19 +63,18 @@ for p in range(persona):
 		classes.append(video)
 
 
-# print('\n>>>Max frames=',maxFrames)
-# print('>>>Persona=',maxPersona)
-# print('>>>Sign=',maxSign)
+
+df = pd.DataFrame()
 df['Name'] = names
 df['Class'] = classes
-df.to_csv('D:\\CIC\\LSM\\CNN_3D\\LSM-CNN3D\\all_aug.csv', index=False)
+df.to_csv('dataset.csv', index=False)
 
 df = pd.DataFrame()
 df['Name'] = namesTrain
 df['Class'] = classesTrain
-df.to_csv('D:\\CIC\\LSM\\CNN_3D\\LSM-CNN3D\\train_aug.csv', index=False)
+df.to_csv('train.csv', index=False)
 
-# df = pd.DataFrame()
-# df['Name'] = namesTest
-# df['Class'] = classesTest
-# df.to_csv('D:\\CIC\\LSM\\CNN_3D\\LSM-CNN3D\\test.csv', index=False)
+df = pd.DataFrame()
+df['Name'] = namesTest
+df['Class'] = classesTest
+df.to_csv('test.csv', index=False)
