@@ -28,4 +28,8 @@ CNN-3D is a specific neural network for extract information of data in sequence 
 
 ## Evaluation
 The evaluation is based in accuracy metric because this dataset is balanced. After 200 epochs, the accuracy is 70% using test data.
+
 ![image](https://github.com/artLara/LSM-CNN3D/assets/63621038/6ceab686-4563-4dc3-8beb-bd4ea32c12b2)
+
+
+[Link of notebook in Google Colab](https://drive.google.com/file/d/1SM0t5vaGmEZNNs4SI2_sMQaEvlOg37ca/view?usp=sharing)
